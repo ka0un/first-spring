@@ -1,6 +1,7 @@
-package com.hapangama.firstspring.domains;
+package com.hapangama.firstspring.domain;
 
 import jakarta.persistence.*;
+
 @Entity
 public class Person {
 
@@ -8,12 +9,22 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String name;
-
+    @Column
     private int age;
-
+    @Column
     @Enumerated(EnumType.STRING)
     private Role title;
+
+    public Person(String name, int age, Role title) {
+        this.name = name;
+        this.age = age;
+        this.title = title;
+    }
+
+    protected Person(){}
+
 
     // Getters and Setters
     public Long getId() {
@@ -47,4 +58,5 @@ public class Person {
     public void setTitle(Role title) {
         this.title = title;
     }
+
 }
